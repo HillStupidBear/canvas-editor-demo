@@ -10,6 +10,11 @@ export function saveAs(blob: Blob, id: number) {
       console.log('保存成功')
     }).catch(err => {
       new Error(err)
+      // const a = document.createElement('a')
+      // a.href = window.URL.createObjectURL(blob)
+      // a.download = 'doc'
+      // a.click()
+      // window.URL.revokeObjectURL(a.href)
     })
   }
   fileReader.onerror = () => {
