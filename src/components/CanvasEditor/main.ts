@@ -19,7 +19,7 @@ import { Dialog } from './components/dialog/Dialog'
 import { debounce } from './utils/index'
 const data = <IElement[]>[]
 
-export function Init(b64File: string) {
+export function Init(b64File: string, id: number) {
   const isApple =
     typeof navigator !== 'undefined' && /Mac OS X/.test(navigator.userAgent)
 
@@ -81,7 +81,7 @@ export function Init(b64File: string) {
   saveDom.onclick = function () {
     console.log('save')
     instance.command.executeExportDocx({
-      fileName: 'content'
+      id: id
     })
   }
 
@@ -637,8 +637,6 @@ export function Init(b64File: string) {
   // instance.use(floatingToolbarPlugin)
   instance.use(docxPlugin)
 
-
-  console.log(instance)
   instance.command.executeImportDocx({
     arrayBuffer: decode(b64File)
   })

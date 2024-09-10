@@ -187,7 +187,7 @@ function convertElementListToDocxChildren(
 }
 
 export interface IExportDocxOption {
-  fileName: string
+  id: number
 }
 
 declare module '@hufe921/canvas-editor' {
@@ -198,7 +198,7 @@ declare module '@hufe921/canvas-editor' {
 
 export default function (command: Command) {
   return function (options: IExportDocxOption) {
-    const { fileName } = options
+    const { id } = options
     const {
       data: { header, main, footer }
     } = command.getValue()
@@ -222,7 +222,7 @@ export default function (command: Command) {
     })
 
     Packer.toBlob(doc).then(blob => {
-      saveAs(blob, `${fileName}.docx`)
+      saveAs(blob, id)
     })
   }
 }

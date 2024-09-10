@@ -26,6 +26,7 @@
     "@hufe921/canvas-editor-plugin-docx": "^0.0.5",
     "@hufe921/canvas-editor-plugin-excel": "^0.0.1",
     "@hufe921/canvas-editor-plugin-floating-toolbar": "^0.0.4",
+    "axios": "^1.7.7",
     "base64-arraybuffer": "^1.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
