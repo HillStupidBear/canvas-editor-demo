@@ -1,5 +1,5 @@
 import "./style.css";
-import { readDucument } from "./api.ts";
+import { readDocument } from "./api.ts";
 import { Init } from "./main.ts";
 import { useEffect } from "react";
 
@@ -7,7 +7,7 @@ const CanvasEditor = ({ width, height, margin, id }) => {
   useEffect(() => {
     importData()
     async function importData() {
-      const base64 = await readDucument(id)
+      const base64 = await readDocument(id)
       Init(base64, id)
     }
   }, [])

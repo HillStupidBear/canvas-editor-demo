@@ -1,5 +1,5 @@
 import axios from "axios"
-export function saveDucoment(id: number, file: string): void {
+export function saveDocument(id: number, file: string): void {
   axios.post('/saveDocument', {
     id,
     file
@@ -15,7 +15,7 @@ export function saveDucoment(id: number, file: string): void {
   })
 }
 
-export function readDucument(id: number) {
+export function readDocument(id: number) {
   return new Promise((resolve) => {
     axios.get('/readDocument', {params: {id}}).then(res => {
       resolve(res)
