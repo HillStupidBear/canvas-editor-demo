@@ -4,7 +4,8 @@ import CanvasEditor from './components/CanvasEditor/index'
 function App() {
   return (
     <>
-      <CanvasEditor width={ 800 } id={ 1 } />
+      {/* minWeight = 794 */}
+      <CanvasEditor width={ 600 } height={ 750 } margin={ '60px' } id={ 1 } />
     </>
   );
 }
