@@ -182,6 +182,10 @@ ul {
   pointer-events: none;
 }
 
+.menu-item__save i {
+  background-image: url('./assets/images/save.svg');
+}
+
 .menu-item__undo i {
   background-image: url('./assets/images/undo.svg');
 }

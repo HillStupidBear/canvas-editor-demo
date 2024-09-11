@@ -1,5 +1,5 @@
 import "./style.css";
-import { exportData } from "./api.ts";
+import { readDucument } from "./api.ts";
 import { Init } from "./main.ts";
 import { useEffect } from "react";
 
@@ -7,7 +7,7 @@ const CanvasEditor = ({ width, height, margin, id }) => {
   useEffect(() => {
     importData()
     async function importData() {
-      const base64 = await exportData()
+      const base64 = await readDucument(id)
       Init(base64, id)
     }
   }, [])
@@ -15,7 +15,10 @@ const CanvasEditor = ({ width, height, margin, id }) => {
     <div style={{ width: `${width}px`, minWidth: '794px', height: `${height}px`, margin: margin, position: 'relative', border: '1px solid #c6c6c6', boxShadow: '2px 2px 8px #c9c9c9' }}>
       <div className="menu" editor-component="menu">
         <div className="menu-item">
-          <div className="menu-item__save" style={{ fontSize: "12px" }}>保存</div>
+          <div className="menu-item__save"><i></i></div>
+        </div>
+        <div className="menu-divider"></div>
+        <div className="menu-item">
           <div className="menu-item__undo"><i></i></div>
           <div className="menu-item__redo"><i></i></div>
           <div className="menu-item__painter" title="格式刷(双击可连续使用)"><i></i></div>

@@ -631,6 +631,16 @@ export function Init(b64File: string, id: number) {
       callback: (command: Command) => {
         command.executePageScaleRecovery()
       }
+    },
+    {
+      key: KeyMap.S,
+      ctrl: true,
+      isGlobal: true,
+      callback: (command: Command) => {
+        command.executeExportDocx({
+          id
+        })
+      }
     }
   ])
 
