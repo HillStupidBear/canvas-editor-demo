@@ -519,29 +519,33 @@ function unique(arr) {
   return arr.filter((a) => !res.has(a.id) && res.set(a.id, 1));
 }
 
+function uniqueLink(arr) {
+  return [...new Set(arr.map(item => JSON.stringify(item)))].map(item => JSON.parse(item))
+}
+
 const NodeViewBlock = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(undefined);
+  let links = [];
+  let allDepart = [
+    {
+      createdAt: "2024-09-01T05:58:29.101Z",
+      updatedAt: "2024-09-05T05:13:16.028Z",
+      parentId: null,
+      id: 1,
+      title: "全行",
+      isLeaf: false,
+      department_id: null,
+      createdById: 1,
+      updatedById: 38,
+      color_of_department: "#1677ff",
+      parent: null
+    }
+  ]; // 所有部门
   const getOption = () => {
-    let allDepart = [
-      {
-        createdAt: "2024-09-01T05:58:29.101Z",
-        updatedAt: "2024-09-05T05:13:16.028Z",
-        parentId: null,
-        id: 1,
-        title: "全行",
-        isLeaf: false,
-        department_id: null,
-        createdById: 1,
-        updatedById: 38,
-        color_of_department: "#1677ff",
-        parent: null
-      }
-    ]; // 所有部门
     let allCategories = []; // echart categories
     let allRelationship = []; // echart categories
     let allDocument = []; // 所有文件
-    let links = [];
     // 取所有的部门和关系信息
     data.data.map((item) => {
       allDocument.push(item);
@@ -550,7 +554,10 @@ const NodeViewBlock = () => {
           allRelationship.push(relationship)
           if (data.data.find(i => i.id === relationship.target_document_id)) {
             links.push({
-              target: data.data.find(i => i.id === relationship.target_document_id).name,
+              type: 'doc-doc',
+              targetId: data.data.find(i => i.id === relationship.target_document_id)?.id,
+              target: data.data.find(i => i.id === relationship.target_document_id)?.name,
+              sourceId: item.id,
               source: item.name,
               category: RelationshipData.find(i => Number(i.id) === relationship.relationship_type_id).name,
               lineStyle: {
@@ -564,7 +571,10 @@ const NodeViewBlock = () => {
         item.relationship_target.map(relationship => {
           if (data.data.find(i => i.id === relationship.source_document_id)) {
             links.push({
+              type: 'doc-doc',
+              targetId: item.id,
               target: item.name,
+              sourceId: data.data.find(i => i.id === relationship.source_document_id)?.id,
               source: data.data.find(i => i.id === relationship.source_document_id).name,
               category: RelationshipData.find(i => Number(i.id) === relationship.relationship_type_id).name,
               lineStyle: {
@@ -577,7 +587,10 @@ const NodeViewBlock = () => {
 
       if (item.department?.title ) {
         links.push({
+          type: 'dept-doc',
+          targetId: item.id,
           target: item.name,
+          sourceId: item.department.id,
           source: item.department.title,
           lineStyle: {
             color: get_color("从属")
@@ -613,10 +626,11 @@ const NodeViewBlock = () => {
     const seriesData = [];
     allDepart.map((item) => {
       let obj = {
+        deptId: item.id,
         dataId: 0 - item.id,
         name: item.title,
         draggable: false,
-        symbolSize: [80, 80],
+        symbolSize: [60, 60],
         itemStyle: {
           color: item.color_of_department || "gray"
         },
@@ -624,11 +638,14 @@ const NodeViewBlock = () => {
       };
       // 公司
       if (item.id === 1) {
-        obj.symbolSize = [100, 100];
+        obj.symbolSize = [80, 80];
         obj.value = 2;
       } else {
         links.push({
+          type: 'dept-dept',
+          targetId: obj.deptId,
           target: obj.name,
+          sourceId: 1,
           source: "全行",
           category: "从属",
           lineStyle: {
@@ -654,6 +671,7 @@ const NodeViewBlock = () => {
       };
       seriesData.push(obj);
     });
+    links = uniqueLink(links)
     console.log(seriesData, "sericeData===========");
     console.log(allCategories, "allCategories=============");
     console.log(allDepart, "allDepart=============");
@@ -761,11 +779,85 @@ const NodeViewBlock = () => {
     setData(MockData);
     setLoading(false);
   }, []);
-  const eventCheck = (e) => {
-    console.log(e, ":click");
-    if (e.data.dataId > 0) {
-      window.dispatchEvent(new CustomEvent("ShowDocumentDetail", { detail: { id: e.data.dataId } }));
+
+  function findParentNode(id, type, arr) {
+    if (type === 'document') {
+      links.map(item => {
+        if (item.type === 'doc-doc' && item.targetId === id) {
+          arr.push({type: 'document', id: item.sourceId, name: item.source })
+        } else if (item.type === 'dept-doc' && item.targetId === id) {
+          arr.push({type: 'department', id: item.sourceId, name: item.source })
+        }
+      })
+    } else if (type === 'department') {
+      links.map(item => {
+        if (item.type === 'dept-dept' && item.targetId === id) {
+          arr.push({type: 'department', id: item.sourceId, name: item.source })
+        }
+      })
     }
+  }
+
+  function findChildNode(id, type, arr) {
+    if (type === 'document') {
+      links.map(item => {
+        if (item.type === 'doc-doc' && item.sourceId === id) {
+          arr.push({type: 'document', id: item.targetId, name: item.target })
+        }
+      })
+    } else if (type === 'department') {
+      links.map(item => {
+        if (item.type === 'dept-dept' && item.sourceId === id) {
+          arr.push({type: 'department', id: item.targetId, name: item.target })
+        } else if (item.type === 'dept-doc' && item.sourceId === id) {
+          arr.push({type: 'document', id: item.targetId, name: item.target })
+        }
+      })
+    }
+  }
+
+  const eventCheck = (e) => {
+    console.log(links);
+    console.log(e);
+    
+    const ParentNode = []
+    const AncestorNode = []
+    const ChildNode = []
+    const GrandsonNode = []
+    if (e.data.dataId > 0) {
+      // 点击了文档
+      // 父辈节点
+      findParentNode(e.data.dataId, 'document', ParentNode)
+      // 祖先辈节点
+      ParentNode.map(item => {
+        findParentNode(item.id, item.type, AncestorNode)
+      })
+      // 子节点
+      findChildNode(e.data.dataId, 'document', ChildNode)
+      // 孙子节点
+      ChildNode.map(item => {
+        findChildNode(item.id, item.type, GrandsonNode)
+      })
+    } else {
+      // 点击了部门
+      // 父辈节点
+      findParentNode(e.data.deptId, 'department', ParentNode)
+      // 祖先辈节点
+      ParentNode.map(item => {
+        findParentNode(item.id, item.type, AncestorNode)
+      })
+      // 子节点
+      findChildNode(e.data.deptId, 'department', ChildNode)
+      // 孙子节点
+      ChildNode.map(item => {
+        findChildNode(item.id, item.type, GrandsonNode)
+      })
+    }
+    console.log(ParentNode, '父节点');
+    console.log(AncestorNode, '祖先节点');
+    console.log(ChildNode, '子节点');
+    console.log(GrandsonNode, '孙子节点');
+    window.dispatchEvent(new CustomEvent("ShowDocumentDetail", { detail: { id: e.data.dataId } }));
   };
 
   return (
