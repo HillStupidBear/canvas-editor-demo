@@ -28,6 +28,8 @@
     "@hufe921/canvas-editor-plugin-floating-toolbar": "^0.0.4",
     "axios": "^1.7.7",
     "base64-arraybuffer": "^1.0.2",
+    "echarts": "^5.5.1",
+    "echarts-for-react": "^3.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
