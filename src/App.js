@@ -7,7 +7,7 @@ function App() {
     <>
       <NodeViewBlock/>
       {/* minWeight = 794 */}
-      {/* <CanvasEditor width={ 900 } height={ 750 } margin={ '60px auto' } id={ 1 } /> */}
+      <CanvasEditor width={ 900 } height={ 750 } margin={ '60px auto' } id={ 1 } />
     </>
   );
 }

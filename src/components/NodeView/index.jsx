@@ -4,490 +4,143 @@ import ReactECharts from "echarts-for-react";
 
 const MockData = {
   "data": [
-      {
-          "createdAt": "2024-09-02T11:28:53.069Z",
-          "updatedAt": "2024-09-12T06:36:34.729Z",
-          "header_footer_id": 1,
-          "template_id": 1,
-          "department_id": 6,
-          "owner_id": 39,
-          "writer_group_id": null,
-          "effective_at": "2024-09-05T16:00:00.000Z",
-          "id": 8,
-          "business_process_status": "生效",
-          "docx_url": "/storage/uploads/F202409020001.docx",
-          "name": "制度编订",
-          "pdf_url": "/storage/uploads/F202409020001.pdf",
-          "terminated_at": "2024-09-06T08:55:30.093Z",
-          "published_at": "2024-09-05T16:00:00.000Z",
-          "sn": "F202409020001",
-          "version": "v01",
-          "legacy_doc_sn": "N/A",
-          "document_to_be_reviewed_ek": null,
-          "status": "生效",
-          "createdById": 39,
-          "updatedById": 39,
-          "level": [
-              {
-                  "createdAt": "2024-09-02T09:26:14.423Z",
-                  "updatedAt": "2024-09-11T09:42:00.280Z",
-                  "id": 3,
-                  "name": "三级 （步骤层）",
-                  "effective_date": "2024-09-10T16:00:00.000Z",
-                  "terminate_date": "2024-09-29T16:00:00.000Z",
-                  "createdById": 37,
-                  "updatedById": 35,
-                  "_document_m2m_level": {
-                      "createdAt": "2024-09-12T06:36:34.725Z",
-                      "updatedAt": "2024-09-12T06:36:34.725Z",
-                      "level_id": 3,
-                      "document_id": 8
-                  }
-              }
-          ],
-          "department": {
-              "createdAt": "2024-09-02T08:33:58.898Z",
-              "updatedAt": "2024-09-05T05:14:50.283Z",
-              "parentId": 1,
-              "id": 6,
-              "title": "法律合规部",
-              "isLeaf": true,
-              "color_of_department": "#b73195",
-              "department_id": null,
-              "createdById": 35,
-              "updatedById": 38
-          },
-          "relationship_source": [
-              {
-                  "createdAt": "2024-09-02T14:49:21.187Z",
-                  "updatedAt": "2024-09-06T22:00:00.131Z",
-                  "relationship_type_id": 2,
-                  "id": 5,
-                  "pdf_url": "/storage/uploads/1725453815879.pdf",
-                  "relationship_count": 2,
-                  "source_document_id": 8,
-                  "target_document_id": 9,
-                  "createdById": 38,
-                  "updatedById": 39
-              },
-              {
-                  "createdAt": "2024-09-03T05:01:22.267Z",
-                  "updatedAt": "2024-09-06T08:57:06.613Z",
-                  "relationship_type_id": 7,
-                  "id": 8,
-                  "pdf_url": null,
-                  "relationship_count": null,
-                  "source_document_id": 8,
-                  "target_document_id": 1,
-                  "createdById": 38,
-                  "updatedById": 39
-              },
-              {
-                  "createdAt": "2024-09-05T07:00:43.834Z",
-                  "updatedAt": "2024-09-06T08:57:06.615Z",
-                  "relationship_type_id": 3,
-                  "id": 10,
-                  "pdf_url": null,
-                  "relationship_count": 2,
-                  "source_document_id": 8,
-                  "target_document_id": 1,
-                  "createdById": 39,
-                  "updatedById": 39
-              },
-              {
-                  "createdAt": "2024-09-05T07:06:30.376Z",
-                  "updatedAt": "2024-09-06T22:00:00.131Z",
-                  "relationship_type_id": 2,
-                  "id": 11,
-                  "pdf_url": null,
-                  "relationship_count": 2,
-                  "source_document_id": 8,
-                  "target_document_id": 9,
-                  "createdById": 39,
-                  "updatedById": 39
-              }
-          ],
-          "relationship_target": [
-              {
-                  "createdAt": "2024-09-03T05:01:39.564Z",
-                  "updatedAt": "2024-09-06T06:19:33.020Z",
-                  "relationship_type_id": 7,
-                  "id": 9,
-                  "pdf_url": null,
-                  "relationship_count": 1,
-                  "source_document_id": 4,
-                  "target_document_id": 8,
-                  "createdById": 38,
-                  "updatedById": 36
-              },
-              {
-                  "createdAt": "2024-09-06T12:21:45.927Z",
-                  "updatedAt": "2024-09-06T12:21:45.929Z",
-                  "relationship_type_id": 1,
-                  "id": 22,
-                  "pdf_url": null,
-                  "relationship_count": null,
-                  "source_document_id": 24,
-                  "target_document_id": 8,
-                  "createdById": 35,
-                  "updatedById": 35
-              }
-          ]
+    {
+      "id": 1,
+      "name": "毛利兰",
+      "department": {
+        "parentId": 1,
+        "id": 2,
+        "color_of_department": "#66ccff",
+        "title": "毛利侦探事务所",
       },
-      {
-        "createdAt": "2024-09-02T11:28:53.069Z",
-        "updatedAt": "2024-09-12T06:36:34.729Z",
-        "header_footer_id": 1,
-        "template_id": 1,
-        "department_id": 6,
-        "owner_id": 39,
-        "writer_group_id": null,
-        "effective_at": "2024-09-05T16:00:00.000Z",
-        "id": 999,
-        "business_process_status": "生效",
-        "docx_url": "/storage/uploads/F202409020001.docx",
-        "name": "测试游离节点",
-        "pdf_url": "/storage/uploads/F202409020001.pdf",
-        "terminated_at": "2024-09-06T08:55:30.093Z",
-        "published_at": "2024-09-05T16:00:00.000Z",
-        "sn": "F202409020001",
-        "version": "v01",
-        "legacy_doc_sn": "N/A",
-        "document_to_be_reviewed_ek": null,
-        "status": "生效",
-        "createdById": 39,
-        "updatedById": 39,
-        "level": [
-            {
-                "createdAt": "2024-09-02T09:26:14.423Z",
-                "updatedAt": "2024-09-11T09:42:00.280Z",
-                "id": 3,
-                "name": "三级 （步骤层）",
-                "effective_date": "2024-09-10T16:00:00.000Z",
-                "terminate_date": "2024-09-29T16:00:00.000Z",
-                "createdById": 37,
-                "updatedById": 35,
-                "_document_m2m_level": {
-                    "createdAt": "2024-09-12T06:36:34.725Z",
-                    "updatedAt": "2024-09-12T06:36:34.725Z",
-                    "level_id": 3,
-                    "document_id": 8
-                }
-            }
-        ],
-        "department": {},
-        "relationship_source": [],
-        "relationship_target": []
+      "relationship_source": [
+        {
+          "relationship_type_id": 2,
+          "id": 2,
+          "source_document_id": 1,
+          "target_document_id": 6,
+        },
+        {
+          "relationship_type_id": 3,
+          "id": 2,
+          "source_document_id": 1,
+          "target_document_id": 7,
+        }
+      ],
+      "relationship_target": []
+    },
+    {
+      "id": 2,
+      "name": "毛利小五郎",
+      "department": {
+        "parentId": 1,
+        "id": 2,
+        "color_of_department": "#66ccff",
+        "title": "毛利侦探事务所",
       },
-      {
-          "createdAt": "2024-09-06T04:19:33.061Z",
-          "updatedAt": "2024-09-12T06:35:57.121Z",
-          "header_footer_id": null,
-          "template_id": 2,
-          "department_id": 2,
-          "owner_id": 35,
-          "writer_group_id": null,
-          "effective_at": "2024-09-05T16:00:00.000Z",
-          "id": 15,
-          "business_process_status": null,
-          "docx_url": null,
-          "name": "test1",
-          "pdf_url": null,
-          "terminated_at": "2024-09-06T08:55:30.058Z",
-          "published_at": "2024-09-05T16:00:00.000Z",
-          "sn": "F202409060003",
-          "version": "v08",
-          "legacy_doc_sn": "N/A",
-          "document_to_be_reviewed_ek": null,
-          "status": "生效",
-          "createdById": 38,
-          "updatedById": 35,
-          "level": [
-              {
-                  "createdAt": "2024-09-02T09:26:09.386Z",
-                  "updatedAt": "2024-09-11T09:41:25.312Z",
-                  "id": 2,
-                  "name": "二级 （方法层）",
-                  "effective_date": "2024-09-10T16:00:00.000Z",
-                  "terminate_date": "2024-09-29T16:00:00.000Z",
-                  "createdById": 37,
-                  "updatedById": 35,
-                  "_document_m2m_level": {
-                      "createdAt": "2024-09-12T06:35:57.117Z",
-                      "updatedAt": "2024-09-12T06:35:57.117Z",
-                      "level_id": 2,
-                      "document_id": 15
-                  }
-              }
-          ],
-          "department": {
-              "createdAt": "2024-09-01T05:59:09.530Z",
-              "updatedAt": "2024-09-05T05:13:23.542Z",
-              "parentId": 1,
-              "id": 2,
-              "title": "总裁办",
-              "isLeaf": true,
-              "color_of_department": "#52c41a",
-              "department_id": null,
-              "createdById": 1,
-              "updatedById": 38
-          },
-          "relationship_source": [
-              {
-                  "createdAt": "2024-09-06T04:19:33.066Z",
-                  "updatedAt": "2024-09-06T04:19:33.069Z",
-                  "relationship_type_id": 1,
-                  "id": 15,
-                  "pdf_url": null,
-                  "relationship_count": null,
-                  "source_document_id": 15,
-                  "target_document_id": 1,
-                  "createdById": 38,
-                  "updatedById": 38
-              }
-          ],
-          "relationship_target": []
+      "relationship_source": [
+        {
+          "relationship_type_id": 1,
+          "id": 4,
+          "source_document_id": 2,
+          "target_document_id": 1,
+        },
+      ],
+      "relationship_target": []
+    },
+    {
+      "id": 3,
+      "name": "目暮十三",
+      "department": {
+        "parentId": 1,
+        "id": 3,
+        "color_of_department": "#39c5bb",
+        "title": "警视厅",
       },
-      {
-          "createdAt": "2024-09-06T06:02:01.199Z",
-          "updatedAt": "2024-09-06T22:00:00.053Z",
-          "header_footer_id": null,
-          "template_id": 1,
-          "department_id": 4,
-          "owner_id": 36,
-          "writer_group_id": null,
-          "effective_at": "2024-09-05T16:00:00.000Z",
-          "id": 21,
-          "business_process_status": null,
-          "docx_url": null,
-          "name": "SOP测试",
-          "pdf_url": null,
-          "terminated_at": "2024-09-06T08:55:30.042Z",
-          "published_at": "2024-09-05T16:00:00.000Z",
-          "sn": "F202409060009",
-          "version": "v14",
-          "legacy_doc_sn": "N/A",
-          "document_to_be_reviewed_ek": null,
-          "status": "生效",
-          "createdById": 36,
-          "updatedById": 36,
-          "level": [
-              {
-                  "createdAt": "2024-09-02T09:26:04.452Z",
-                  "updatedAt": "2024-09-11T09:40:58.529Z",
-                  "id": 1,
-                  "name": "一级（目标层）",
-                  "effective_date": "2024-09-10T16:00:00.000Z",
-                  "terminate_date": "2024-09-29T16:00:00.000Z",
-                  "createdById": 37,
-                  "updatedById": 35,
-                  "_document_m2m_level": {
-                      "createdAt": "2024-09-06T06:02:01.211Z",
-                      "updatedAt": "2024-09-06T06:02:01.211Z",
-                      "level_id": 1,
-                      "document_id": 21
-                  }
-              }
-          ],
-          "department": {
-              "createdAt": "2024-09-02T08:33:16.181Z",
-              "updatedAt": "2024-09-05T05:14:05.242Z",
-              "parentId": 1,
-              "id": 4,
-              "title": "运营部",
-              "isLeaf": true,
-              "color_of_department": "#1633aa",
-              "department_id": null,
-              "createdById": 35,
-              "updatedById": 38
-          },
-          "relationship_source": [],
-          "relationship_target": []
+      "relationship_source": [
+        {
+          "relationship_type_id": 4,
+          "id": 5,
+          "source_document_id": 3,
+          "target_document_id": 4,
+        },
+      ],
+      "relationship_target": []
+    },
+    {
+      "id": 4,
+      "name": "高木涉",
+      "department": {
+        "parentId": 1,
+        "id": 3,
+        "color_of_department": "#39c5bb",
+        "title": "警视厅",
       },
-      {
-          "createdAt": "2024-09-06T12:20:25.153Z",
-          "updatedAt": "2024-09-11T09:57:17.200Z",
-          "header_footer_id": 2,
-          "template_id": 1,
-          "department_id": 2,
-          "owner_id": 35,
-          "writer_group_id": 2,
-          "effective_at": "2024-09-05T16:00:00.000Z",
-          "id": 24,
-          "business_process_status": null,
-          "docx_url": "/storage/uploads/F202409060012.docx",
-          "name": "盈利性分析管理咨询项目",
-          "pdf_url": "/storage/uploads/F202409060012.pdf",
-          "terminated_at": null,
-          "published_at": "2024-09-06T16:00:00.000Z",
-          "sn": "F202409060012",
-          "version": "v17",
-          "legacy_doc_sn": "N/A",
-          "document_to_be_reviewed_ek": null,
-          "status": "生效",
-          "createdById": 35,
-          "updatedById": 35,
-          "level": [
-              {
-                  "createdAt": "2024-09-02T09:26:04.452Z",
-                  "updatedAt": "2024-09-11T09:40:58.529Z",
-                  "id": 1,
-                  "name": "一级（目标层）",
-                  "effective_date": "2024-09-10T16:00:00.000Z",
-                  "terminate_date": "2024-09-29T16:00:00.000Z",
-                  "createdById": 37,
-                  "updatedById": 35,
-                  "_document_m2m_level": {
-                      "createdAt": "2024-09-06T12:21:45.935Z",
-                      "updatedAt": "2024-09-06T12:21:45.935Z",
-                      "level_id": 1,
-                      "document_id": 24
-                  }
-              }
-          ],
-          "department": {
-              "createdAt": "2024-09-01T05:59:09.530Z",
-              "updatedAt": "2024-09-05T05:13:23.542Z",
-              "parentId": 1,
-              "id": 2,
-              "title": "总裁办",
-              "isLeaf": true,
-              "color_of_department": "#52c41a",
-              "department_id": null,
-              "createdById": 1,
-              "updatedById": 38
-          },
-          "relationship_source": [
-              {
-                  "createdAt": "2024-09-06T12:21:45.927Z",
-                  "updatedAt": "2024-09-06T12:21:45.929Z",
-                  "relationship_type_id": 1,
-                  "id": 22,
-                  "pdf_url": null,
-                  "relationship_count": null,
-                  "source_document_id": 24,
-                  "target_document_id": 8,
-                  "createdById": 35,
-                  "updatedById": 35
-              }
-          ],
-          "relationship_target": []
+      "relationship_source": [],
+      "relationship_target": []
+    },
+    {
+      "id": 6,
+      "name": "工藤新一",
+      "department": {
+        "parentId": 1,
+        "id": 4,
+        "color_of_department": "#549f06",
+        "title": "帝丹高中",
       },
-      {
-          "createdAt": "2024-09-11T09:16:46.825Z",
-          "updatedAt": "2024-09-11T09:55:05.819Z",
-          "header_footer_id": null,
-          "template_id": 2,
-          "department_id": 3,
-          "owner_id": 41,
-          "writer_group_id": 2,
-          "effective_at": "2024-09-10T16:00:00.000Z",
-          "id": 30,
-          "business_process_status": null,
-          "docx_url": "/storage/uploads/F202409060012.docx",
-          "name": "盈利性分析管理咨询项目重检1",
-          "pdf_url": null,
-          "terminated_at": null,
-          "published_at": "2024-09-09T16:00:00.000Z",
-          "sn": "F202409110001",
-          "version": "v23",
-          "legacy_doc_sn": "N/A",
-          "document_to_be_reviewed_ek": null,
-          "status": "生效",
-          "createdById": 35,
-          "updatedById": 35,
-          "level": [
-              {
-                  "createdAt": "2024-09-02T09:26:04.452Z",
-                  "updatedAt": "2024-09-11T09:40:58.529Z",
-                  "id": 1,
-                  "name": "一级（目标层）",
-                  "effective_date": "2024-09-10T16:00:00.000Z",
-                  "terminate_date": "2024-09-29T16:00:00.000Z",
-                  "createdById": 37,
-                  "updatedById": 35,
-                  "_document_m2m_level": {
-                      "createdAt": "2024-09-11T09:16:46.858Z",
-                      "updatedAt": "2024-09-11T09:16:46.858Z",
-                      "level_id": 1,
-                      "document_id": 30
-                  }
-              }
-          ],
-          "department": {
-              "createdAt": "2024-09-01T05:59:29.485Z",
-              "updatedAt": "2024-09-05T05:13:36.059Z",
-              "parentId": 1,
-              "id": 3,
-              "title": "金融科技部",
-              "isLeaf": true,
-              "color_of_department": "#f5222d",
-              "department_id": null,
-              "createdById": 1,
-              "updatedById": 38
-          },
-          "relationship_source": [],
-          "relationship_target": []
-      }
+      "relationship_source": [],
+      "relationship_target": []
+    },
+    {
+      "id": 7,
+      "name": "铃木园子",
+      "department": {
+        "parentId": 1,
+        "id": 4,
+        "color_of_department": "#549f06",
+        "title": "帝丹高中",
+      },
+      "relationship_source": [
+        {
+          "relationship_type_id": 3,
+          "id": 2,
+          "source_document_id": 7,
+          "target_document_id": 6,
+        }
+      ],
+      "relationship_target": []
+    },
   ],
 }
 
 const RelationshipData = [
     {
-        "createdAt": "2024-09-02T06:55:35.462Z",
-        "updatedAt": "2024-09-03T02:39:28.997Z",
         "id": 1,
-        "name": "内容拆分",
-        "createdById": 38,
-        "updatedById": 36
+        "name": "父女",
     },
     {
-        "createdAt": "2024-09-02T06:55:42.669Z",
-        "updatedAt": "2024-09-03T02:40:02.425Z",
         "id": 2,
-        "name": "历史关系",
-        "createdById": 38,
-        "updatedById": 36
+        "name": "情侣",
     },
     {
-        "createdAt": "2024-09-03T02:38:58.280Z",
-        "updatedAt": "2024-09-03T05:01:56.083Z",
         "id": 3,
-        "name": "下级文档",
-        "createdById": 36,
-        "updatedById": 38
+        "name": "同学",
     },
     {
-        "createdAt": "2024-09-03T02:39:51.575Z",
-        "updatedAt": "2024-09-03T02:39:51.575Z",
         "id": 4,
-        "name": "中英版本",
-        "createdById": 36,
-        "updatedById": 36
+        "name": "下属",
     },
     {
-        "createdAt": "2024-09-03T02:40:20.718Z",
-        "updatedAt": "2024-09-03T02:40:20.718Z",
         "id": 5,
         "name": "内容合并",
-        "createdById": 36,
-        "updatedById": 36
     },
     {
-        "createdAt": "2024-09-03T02:40:29.675Z",
-        "updatedAt": "2024-09-03T02:40:29.675Z",
         "id": 6,
         "name": "替代关系",
-        "createdById": 36,
-        "updatedById": 36
     },
     {
-        "createdAt": "2024-09-03T02:40:37.757Z",
-        "updatedAt": "2024-09-03T02:40:37.757Z",
         "id": 7,
         "name": "参考关系",
-        "createdById": 36,
-        "updatedById": 36
     }
 ]
 
@@ -533,7 +186,7 @@ const NodeViewBlock = () => {
       updatedAt: "2024-09-05T05:13:16.028Z",
       parentId: null,
       id: 1,
-      title: "全行",
+      title: "东京都",
       isLeaf: false,
       department_id: null,
       createdById: 1,
@@ -595,7 +248,7 @@ const NodeViewBlock = () => {
           lineStyle: {
             color: get_color("从属")
           },
-          category: "从属"
+          category: ""
         });
         allDepart.push(item.department);
       }
@@ -646,8 +299,8 @@ const NodeViewBlock = () => {
           targetId: obj.deptId,
           target: obj.name,
           sourceId: 1,
-          source: "全行",
-          category: "从属",
+          source: "东京都",
+          category: "",
           lineStyle: {
             color: get_color("从属")
           }
